@@ -15,7 +15,6 @@
 @property (assign ,nonatomic)CGFloat zoomY;// 波纹振幅A
 @property (assign ,nonatomic)CGFloat translateX;// 波浪水平位移 Φ
 @property (assign ,nonatomic)CGFloat currentWavePointY;// 波浪当前的高度 k
-@property (assign ,nonatomic)BOOL flag;
 @end
 @implementation WaveSchedule
 - (instancetype)initWithFrame:(CGRect)frame
@@ -24,7 +23,6 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         self.zoomY = 1.0f;
-        self.flag = NO;
     }
     return self;
 }
@@ -47,22 +45,6 @@
 - (void)setCurrentWave:(CADisplayLink *)displayLink
 {
     self.translateX += 0.1;
-    if (!self.flag)
-    {
-        self.zoomY += 0.02;
-        if (self.zoomY >= 1.5)
-        {
-            self.flag = YES;
-        }
-    }
-    else
-    {
-        self.zoomY -= 0.02;
-        if (self.zoomY <= 1.0)
-        {
-            self.flag = NO;
-        }
-    }
     [self setCurrentWaveLayerPath];
 }
 - (void)setCurrentWaveLayerPath

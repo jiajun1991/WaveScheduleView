@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WaveSchedule : UIView
+//根据进度的百分比来改变水波纹
 - (void)drawWaterWavePath:(CGFloat)percent;
 @end
